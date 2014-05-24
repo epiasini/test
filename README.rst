@@ -1,5 +1,5 @@
 test
 ====
 
-.. image:: https://travis-ci.org/epiasini/pymuvr.svg?branch=master)](https://travis-ci.org/epiasini/pymuvr
+.. image:: https://travis-ci.org/epiasini/pymuvr.svg?branch=master
     :alt: Travis badge
