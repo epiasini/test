@@ -6,4 +6,4 @@ test
     :alt: Travis badge
 
 
-`spykeutils <https://github.com/rproepp/spykeutils>`.
+`spykeutils <https://github.com/rproepp/spykeutils>`_.
