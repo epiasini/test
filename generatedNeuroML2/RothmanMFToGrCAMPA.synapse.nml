@@ -20,7 +20,7 @@
   </TriExpDirectTetraExpSpilloverStpSynapse>
 
 
-    <ComponentType description="Synapse with a direct (fast) and a spillover (slow) component, each with its separate short term plasticity model. Basic waveforms are triexponential (one rise time, two decay times) for direct, and tetraexponential (one rise time, three decay times) for spillover." extends="baseSynapse" name="TriExpDirectTetraExpSpilloverStpSynapse">
+    <ComponentType description="Synapse with a direct (fast) and a spillover (slow) component, each with its separate short term plasticity model. Basic waveforms are triexponential (one rise time, two decay times) for direct, and tetraexponential (one rise time, three decay times) for spillover." extends="baseVoltageDepSynapse" name="TriExpDirectTetraExpSpilloverStpSynapse">
       <Constant dimension="none" name="tsinceRate" value="1" />
       <Parameter description="Reversal potential of the synapse" dimension="voltage" name="erev" />
       <Exposure description="Time varying conductance through the synapse" dimension="conductance" name="g" />

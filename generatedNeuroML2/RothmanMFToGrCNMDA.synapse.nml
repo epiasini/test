@@ -17,7 +17,7 @@
     </notes>
   </TriExpBlockStpSynapse>
 
-    <ComponentType description="Blocking synapse with short term plasticity and triexponential basic waveform (one rise time, two decay times)." extends="baseSynapse" name="TriExpBlockStpSynapse">
+    <ComponentType description="Blocking synapse with short term plasticity and triexponential basic waveform (one rise time, two decay times)." extends="baseVoltageDepSynapse" name="TriExpBlockStpSynapse">
       <Parameter description="Reversal potential of the synapse" dimension="voltage" name="erev" />
       <Child name="plasticityMechanism" type="basePlasticityMechanism" />
       <Child name="blockMechanism" type="baseBlockMechanism" />

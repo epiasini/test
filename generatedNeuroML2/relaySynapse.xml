@@ -6,7 +6,7 @@
   <Include file="NeuroMLCoreDimensions.xml"/>
   <Include file="Synapses.xml"/>
 
-  <ComponentType name="dummySynapse"
+  <ComponentType name="relaySynapse"
 		 extends="baseCurrentBasedSynapse"
 		 description="Intended to be used together with a
 			      relayCell to form a simple spike relay.">

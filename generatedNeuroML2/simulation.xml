@@ -16,10 +16,7 @@
     </Display>
     <Display id="MFs_i" title="MFs, i" timeScale="1ms" xmin="-10.0" xmax="520.0" ymin="-0.5" ymax="1.5">
       <Line id="MFs_i" timeScale="1ms"
-	    quantity="MFs/0/MFRelay/iSyn" scale="1 nA"
-	    color="#000000"/>
-      <Line id="MFs_spiking" timeScale="1ms"
-	    quantity="MFs/0/MFRelay/spiking" scale="1 nA"
+	    quantity="MFs/0/relayMF/spiking" scale="1"
 	    color="#000000"/>
     </Display>    
   </Simulation>
