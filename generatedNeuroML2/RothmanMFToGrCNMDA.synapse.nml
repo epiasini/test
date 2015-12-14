@@ -2,7 +2,6 @@
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="RothmanMFToGrCNMDA" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2 http://neuroml.svn.sourceforge.net/viewvc/neuroml/NeuroML2/Schemas/NeuroML2/NeuroML_v2beta.xsd">
 
   <notes>NeuroML 2 file containing a single synapse.</notes>
-  <Include file="NeuroMLCoreDimensions.xml" />
   <Include file="Synapses.xml" />
 
   <TriExpBlockStpSynapse directAmp1="17.0nS" directAmp2="2.645nS" directTauDecay1="13.52 ms" directTauDecay2="121.9 ms" directTauRise="0.8647 ms" erev="0 mV" id="RothmanMFToGrCNMDA">

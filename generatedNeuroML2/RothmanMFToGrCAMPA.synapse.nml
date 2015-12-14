@@ -3,7 +3,6 @@
 
   <notes>NeuroML 2 file containing a single synapse. </notes>
 
-  <Include file="NeuroMLCoreDimensions.xml" />
   <Include file="Synapses.xml" />
 
 
