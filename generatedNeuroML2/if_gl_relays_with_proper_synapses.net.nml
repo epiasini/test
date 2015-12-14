@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="network_if_gl">
+
+    <notes>
+      Simple network for testing NeuroML2 version of models for
+      Billings et al 2014.
+    </notes>
+
+
+    <Include href="IaF_GrC_no_tonic_GABA.cell.nml"/>
+    <Include href="relayCell.xml"/>
+    <Include href="relaySynapse.xml"/>
+
+    <Include href="RothmanMFToGrCAMPA.synapse.nml"/>
+    <Include href="RothmanMFToGrCNMDA.synapse.nml"/>
+
+    <relaySynapse id="relaySyn"/>
+    <relayCell id="relayMF"/>
+
+    <expOneSynapse id="testSyn" tauDecay="200 ms" erev="40 mV" gbase="0.1 nS"/>
+    
+    <poissonFiringSynapse id="MF_stim_0" averageRate="0.1 per_ms" synapse="relaySyn" spikeTarget="./relaySyn"/>    
+    
+    <network id="network_if_gl" type="networkWithTemperature" temperature="35.0 degC">
+      
+      <population id="MFs" component="relayMF" type="populationList" size="1">
+	<annotation>
+          <property tag="color" value="0.7421875 0.27734375 0.27734375"/>
+        </annotation>
+        <instance id="0">
+          <location x="-24.81423" y="22.996115" z="-14.799983"/>
+        </instance>
+      </population>
+      
+      <population id="GrCs" component="IaF_GrC_no_tonic_GABA" type="populationList" size="2">
+        <annotation>
+          <property tag="color" value="0.8359375 0.75 0.9921875"/>
+        </annotation>
+        <instance id="0">
+          <location x="-26.353764" y="-10.970131" z="-25.889622"/>
+        </instance>
+        <instance id="1">
+          <location x="26.353764" y="-10.970131" z="-25.889622"/>
+        </instance>	
+      </population>
+
+      <projection id="MFs_to_GrCs_AMPA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="RothmanMFToGrCAMPA">
+        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+      </projection>
+      <projection id="MFs_to_GrCs_NMDA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="RothmanMFToGrCNMDA">
+        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+      </projection>
+
+      <inputList id="MF_stim_0_list" component="MF_stim_0" population="MFs">
+        <input id="0" target="../MFs/0/relayMF" destination="synapses" fractionAlong="0.0"/>
+      </inputList>
+	
+	
+    </network>
+    
+</neuroml>
