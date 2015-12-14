@@ -10,7 +10,7 @@
     <Include href="ExcCell.cell.nml"/>
     <Include href="IaF_GrC_no_tonic_GABA.cell.nml"/>
     <Include href="relayCell.xml"/>
-    <Include href="dummySynapse.xml"/>
+    <Include href="relaySynapse.xml"/>
 
     <expOneSynapse id="testSyn" tauDecay="200 ms" erev="40 mV" gbase="0.1
 								   nS"/>
