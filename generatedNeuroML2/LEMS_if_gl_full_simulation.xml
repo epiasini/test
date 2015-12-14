@@ -1,0 +1,32 @@
+<Lems>
+  <!--<Target component="modelExample"/>--> <!-- cell and synaptic model showcase -->
+  <Target component="sim"/> <!-- rate I/O analysis -->
+
+  <Include file="NeuroMLCoreDimensions.xml"/>
+  <Include file="Cells.xml"/>
+  <Include file="Inputs.xml"/>
+  <Include file="Networks.xml"/>
+  <Include file="Simulation.xml"/>
+
+  <Include file="if_gl_full.net.nml"/>
+
+  <Simulation id="sim" length="1 s" step="0.025 ms" target="network_if_gl">
+    <Display id="GrCs_v" title="GrCs, VOLTAGE" timeScale="1ms" xmin="-10.0" xmax="520.0" ymin="-80.0" ymax="-35.0">
+      <Line id="GrCs_v_1" timeScale="1ms"
+	    quantity="GrCs/0/IaF_GrC_no_tonic_GABA/v" scale="1 mV"
+	    color="#000000"/>
+      <Line id="GrCs_v_2" timeScale="1ms"
+	    quantity="GrCs/1/IaF_GrC_no_tonic_GABA/v" scale="1 mV"
+	    color="#0000FF"/>
+      <Line id="GrCs_v_3" timeScale="1ms"
+	    quantity="GrCs/2/IaF_GrC_no_tonic_GABA/v" scale="1 mV"
+	    color="#00FF00"/>
+    </Display>
+    <Display id="MFs_i" title="MFs, i" timeScale="1ms" xmin="-10.0" xmax="520.0" ymin="-0.5" ymax="1.5">
+      <Line id="MFs_i" timeScale="1ms"
+	    quantity="MFs/0/relayMF/spiking" scale="1"
+	    color="#000000"/>
+    </Display>    
+  </Simulation>
+
+</Lems>
