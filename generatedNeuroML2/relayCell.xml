@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Lems xmlns="http://www.neuroml.org/lems/0.7.2"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.neuroml.org/lems/0.7.2">
+
+  <Include file="NeuroMLCoreDimensions.xml"/>
+  <Include file="Synapses.xml"/>
+
+  <ComponentType name="relayCell" 
+		 extends="baseCellMembPot"
+		 description="Simple model of a point cell, with no
+			      separate morphology element, meant to be
+			      used together with a relaySynapse to
+			      form a simple spike relay.">
+
+    <Attachments name="synapses" type="basePointCurrent"/>
+    <Exposure name="iSyn" dimension="current" description="Total
+							   current due
+							   to synaptic
+							   inputs"/>
+    <Constant name="threshold" dimension="current" value="0.5nA"/>
+
+    <Dynamics>
+
+      <StateVariable name="v" exposure="v" dimension="voltage"/>
+      <StateVariable name="spiking" dimension="none"/>
+
+      <DerivedVariable name="iSyn" dimension="current" exposure="iSyn" select="synapses[*]/i" reduce="add" />
+
+      <OnStart>
+        <StateAssignment variable="v" value="0"/>
+        <StateAssignment variable="spiking" value="0"/>
+      </OnStart>
+
+      <OnCondition test="iSyn .gt. threshold">
+        <StateAssignment variable="spiking" value="1"/>
+        <EventOut port="spike"/>
+      </OnCondition>
+
+      <OnCondition test="iSyn .lt. threshold">
+        <StateAssignment variable="spiking" value="0"/>
+      </OnCondition>
+
+    </Dynamics>
+
+  </ComponentType>
+
+
+
+</Lems>

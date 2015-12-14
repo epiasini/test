@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Lems xmlns="http://www.neuroml.org/lems/0.7.3"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.neuroml.org/lems/0.7.3">
+
+  <Include file="NeuroMLCoreDimensions.xml"/>
+  <Include file="Synapses.xml"/>
+
+  <ComponentType name="dummySynapse"
+		 extends="baseCurrentBasedSynapse"
+		 description="Intended to be used together with a
+			      relayCell to form a simple spike relay.">
+    <Constant name="high" dimension="current" value="1 nA"/>
+    <Constant name="low" dimension="current" value="0 nA"/>
+
+    <Dynamics>
+      <StateVariable name="i" exposure="i" dimension="current"/>
+
+      <Regime name="on">
+	<OnEntry>
+	  <StateAssignment variable="i" value="high"/>
+	</OnEntry>
+	<OnCondition test="i .eq. high">
+ 	  <Transition regime="off"/>
+	</OnCondition>
+      </Regime>
+      
+      <Regime name="off" initial="true">
+	<OnEntry>
+          <StateAssignment variable="i" value="low" />
+	</OnEntry>
+	<OnEvent port="in">
+	  <Transition regime="on"/>
+	</OnEvent>
+      </Regime>
+    </Dynamics>
+
+  </ComponentType>
+</Lems>
