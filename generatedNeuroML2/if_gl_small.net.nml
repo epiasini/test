@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="network_if_gl">
+
+    <notes>
+
+Network structure (NeuroML 2beta4) for project: if_gl saved with neuroConstruct v1.7.1 on: 10:02:19, 14-Dec-15
+
+Cell Group: MFs contains 190 cells
+Cell Group: GrCs contains 498 cells
+
+Network connection: MFs_to_GrCs_AMPA contains 1976 individual synaptic connections
+Network connection: MFs_to_GrCs_NMDA contains 1976 individual synaptic connections
+
+
+    </notes>
+
+
+    <include href="ExcCell.cell.nml"/>
+    <include href="FastSynInput.synapse.nml"/>
+    <include href="IaF_GrC_no_tonic_GABA.cell.nml"/>
+    <include href="LeakConductance.channel.nml"/>
+    <include href="RothmanMFToGrCAMPA.synapse.nml"/>
+    <include href="RothmanMFToGrCNMDA.synapse.nml"/>
+
+    <poissonFiringSynapse id="MF_stim_0" averageRate="0.01 per_ms" synapse="FastSynInput" spikeTarget="./FastSynInput"/>    
+    <poissonFiringSynapse id="MF_stim_1" averageRate="0.01 per_ms" synapse="FastSynInput" spikeTarget="./FastSynInput"/>
+    <poissonFiringSynapse id="MF_stim_2" averageRate="0.08 per_ms" synapse="FastSynInput" spikeTarget="./FastSynInput"/>
+    <poissonFiringSynapse id="MF_stim_3" averageRate="0.08 per_ms" synapse="FastSynInput" spikeTarget="./FastSynInput"/>
+    
+    
+    <network id="network_if_gl" type="networkWithTemperature" temperature="35.0 degC">
+
+        
+
+        <population id="MFs" component="ExcCell" type="populationList" size="4">
+           <annotation>
+                <property tag="color" value="0.7421875 0.27734375 0.27734375"/>
+            </annotation>
+            <instance id="0">
+                <location x="-24.81423" y="22.996115" z="-14.799983"/>
+            </instance>
+            <instance id="1">
+                <location x="6.565485" y="-18.400328" z="-26.767448"/>
+            </instance>
+            <instance id="2">
+                <location x="8.6967325" y="17.556622" z="24.854485"/>
+            </instance>
+            <instance id="3">
+                <location x="31.523079" y="4.7188334" z="10.61701"/>
+            </instance>
+        </population>
+
+        <population id="GrCs" component="IaF_GrC_no_tonic_GABA" type="populationList" size="1">
+           <annotation>
+                <property tag="color" value="0.8359375 0.75 0.9921875"/>
+            </annotation>
+            <instance id="0">
+                <location x="-26.353764" y="-10.970131" z="-25.889622"/>
+            </instance>
+        </population>
+
+
+
+        <projection id="MFs_to_GrCs_AMPA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="RothmanMFToGrCAMPA">
+            <connection id="0" preCellId="../MFs/0/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+            <connection id="1" preCellId="../MFs/1/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+            <connection id="2" preCellId="../MFs/2/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+            <connection id="3" preCellId="../MFs/3/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+        </projection>
+
+        <projection id="MFs_to_GrCs_NMDA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="RothmanMFToGrCNMDA">
+            <connection id="0" preCellId="../MFs/0/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+            <connection id="1" preCellId="../MFs/1/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+            <connection id="2" preCellId="../MFs/2/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+            <connection id="3" preCellId="../MFs/3/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+        </projection>
+
+        <inputList id="MF_stim_0" component="MF_stim_0" population="MFs">
+            <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
+        </inputList>
+        <inputList id="MF_stim_1" component="MF_stim_1" population="MFs">
+            <input id="0" target="../MFs/188/ExcCell" destination="synapses" fractionAlong="0.0"/>
+        </inputList>
+        <inputList id="MF_stim_2" component="MF_stim_2" population="MFs">
+            <input id="0" target="../MFs/187/ExcCell" destination="synapses" fractionAlong="0.0"/>
+        </inputList>
+        <inputList id="MF_stim_3" component="MF_stim_3" population="MFs">
+            <input id="0" target="../MFs/186/ExcCell" destination="synapses" fractionAlong="0.0"/>
+        </inputList>
+
+
+
+    </network>
+
+</neuroml>
