@@ -43,13 +43,19 @@
           <location x="26.353764" y="-10.970131" z="-25.889622"/>
         </instance>	
       </population>
+
+      <projection id="MFs_to_GrCs_AMPA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="testSyn">
+        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+      </projection>
       
+      <!--
       <projection id="MFs_to_GrCs_AMPA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="RothmanMFToGrCAMPA">
         <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
       </projection>
       <projection id="MFs_to_GrCs_NMDA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="RothmanMFToGrCNMDA">
         <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
       </projection>
+      -->
 
       <inputList id="MF_stim_0_list" component="MF_stim_0" population="MFs">
         <input id="0" target="../MFs/0/relayMF" destination="synapses" fractionAlong="0.0"/>
