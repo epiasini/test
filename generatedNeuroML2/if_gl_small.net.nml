@@ -87,17 +87,17 @@ Network connection: MFs_to_GrCs_NMDA contains 1976 individual synaptic connectio
             <connection id="3" preCellId="../MFs/3/ExcCell" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
 	</projection>
 
-        <inputList id="MF_stim_0" component="MF_stim_0" population="MFs">
+        <inputList id="MF_stim_0_list" component="MF_stim_0" population="MFs">
             <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
         </inputList>
-        <inputList id="MF_stim_1" component="MF_stim_1" population="MFs">
-            <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
+        <inputList id="MF_stim_1_list" component="MF_stim_1" population="MFs">
+            <input id="0" target="../MFs/1/ExcCell" destination="synapses" fractionAlong="0.0"/>
         </inputList>
-        <inputList id="MF_stim_2" component="MF_stim_2" population="MFs">
-            <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
+        <inputList id="MF_stim_2_list" component="MF_stim_2" population="MFs">
+            <input id="0" target="../MFs/2/ExcCell" destination="synapses" fractionAlong="0.0"/>
         </inputList>
-        <inputList id="MF_stim_3" component="MF_stim_3" population="MFs">
-            <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
+        <inputList id="MF_stim_3_list" component="MF_stim_3" population="MFs">
+            <input id="0" target="../MFs/3/ExcCell" destination="synapses" fractionAlong="0.0"/>
         </inputList>
 
 
