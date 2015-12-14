@@ -19,8 +19,10 @@ Network connection: MFs_to_GrCs_NMDA contains 1976 individual synaptic connectio
     <include href="FastSynInput.synapse.nml"/>
     <include href="IaF_GrC_no_tonic_GABA.cell.nml"/>
     <include href="LeakConductance.channel.nml"/>
+    <!--
     <include href="RothmanMFToGrCAMPA.synapse.nml"/>
     <include href="RothmanMFToGrCNMDA.synapse.nml"/>
+    -->
 
     <poissonFiringSynapse id="MF_stim_0" averageRate="0.01 per_ms" synapse="FastSynInput" spikeTarget="./FastSynInput"/>    
     <poissonFiringSynapse id="MF_stim_1" averageRate="0.01 per_ms" synapse="FastSynInput" spikeTarget="./FastSynInput"/>
