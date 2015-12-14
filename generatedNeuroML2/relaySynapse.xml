@@ -3,8 +3,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.neuroml.org/lems/0.7.3">
 
-  <Include file="Synapses.xml"/>
-
   <ComponentType name="relaySynapse"
 		 extends="baseCurrentBasedSynapse"
 		 description="Intended to be used together with a

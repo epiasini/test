@@ -3,8 +3,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.neuroml.org/lems/0.7.2">
 
-  <Include file="Synapses.xml"/>
-
   <ComponentType name="relayCell" 
 		 extends="baseCellMembPot"
 		 description="Simple model of a point cell, with no

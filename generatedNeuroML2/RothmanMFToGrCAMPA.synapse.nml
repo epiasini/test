@@ -3,8 +3,6 @@
 
   <notes>NeuroML 2 file containing a single synapse. </notes>
 
-  <Include file="Synapses.xml" />
-
 
   <TriExpDirectTetraExpSpilloverStpSynapse directAmp1="3.724nS" directAmp2="0.3033nS" directTauDecay1="0.3351 ms" directTauDecay2="1.651 ms" directTauRise="0.3274 ms" erev="0 mV" id="RothmanMFToGrCAMPA" spilloverAmp1="0.2487nS" spilloverAmp2="0.2799nS" spilloverAmp3="0.1268nS" spilloverTauDecay1="0.4 ms" spilloverTauDecay2="4.899 ms" spilloverTauDecay3="43.10 ms" spilloverTauRise="0.5548 ms">
     <directPlasticityMechanism initReleaseProb="0.1249" tauRec="131 ms" type="tsodyksMarkramDepMechanism" />
