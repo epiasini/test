@@ -27,7 +27,7 @@ Network connection: MFs_to_GrCs_NMDA contains 1976 individual synaptic connectio
     <poissonFiringSynapse id="MF_stim_2" averageRate="0.08 per_ms" synapse="FastSynInput" spikeTarget="./FastSynInput"/>
     <poissonFiringSynapse id="MF_stim_3" averageRate="0.08 per_ms" synapse="FastSynInput" spikeTarget="./FastSynInput"/>
 
-    <expOneSynapse id="testSyn", tauDecay="3 ms", erev="0 mV", gbase="5 nS"/>
+    <expOneSynapse id="testSyn" tauDecay="3 ms" erev="0 mV" gbase="5 nS"/>
     
     
     <network id="network_if_gl" type="networkWithTemperature" temperature="35.0 degC">
@@ -89,13 +89,13 @@ Network connection: MFs_to_GrCs_NMDA contains 1976 individual synaptic connectio
             <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
         </inputList>
         <inputList id="MF_stim_1" component="MF_stim_1" population="MFs">
-            <input id="0" target="../MFs/188/ExcCell" destination="synapses" fractionAlong="0.0"/>
+            <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
         </inputList>
         <inputList id="MF_stim_2" component="MF_stim_2" population="MFs">
-            <input id="0" target="../MFs/187/ExcCell" destination="synapses" fractionAlong="0.0"/>
+            <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
         </inputList>
         <inputList id="MF_stim_3" component="MF_stim_3" population="MFs">
-            <input id="0" target="../MFs/186/ExcCell" destination="synapses" fractionAlong="0.0"/>
+            <input id="0" target="../MFs/0/ExcCell" destination="synapses" fractionAlong="0.0"/>
         </inputList>
 
 
