@@ -12,12 +12,6 @@
     <Include href="relayCell.xml"/>
     <Include href="relaySynapse.xml"/>
 
-    <!-- these are not really needed here but it's best to keep the
-    imports as I'm using the blocking model from the Rothman NMDA
-    model for the dummmy synapse -->
-    <Include href="RothmanMFToGrCAMPA.synapse.nml"/>
-    <Include href="RothmanMFToGrCNMDA.synapse.nml"/>
-
     <relaySynapse id="relaySyn"/>
     <relayCell id="relayMF"/>
 
@@ -34,7 +28,12 @@
       <plasticityMechanism initReleaseProb="0.03220" tauFac="6.394 ms"
 			   tauRec="236.1 ms"
 			   type="tsodyksMarkramDepFacMechanism" />
-      <blockMechanism C1="2.07 mM" C2="0.015 mM" T="35 degC" blockConcentration="1 mM" deltaBind="0.35" deltaPerm="0.53" species="mg" type="RothmanBlockMechanism" z="2" />
+      <blockMechanism type="voltageConcDepBlockMechanism"
+		      blockConcentration="1 mM"
+		      scalingConc="1 mM" scalingVolt="20 mV"/>
+      <!-- if one wants something vaguely realistic here, it's really
+      necessary to include the RothmanBlockMechanism from the
+      definition of the full NMDA model -->
     </blockingPlasticSynapse>
     
     <poissonFiringSynapse id="mossySpikerON" averageRate="80 Hz"
