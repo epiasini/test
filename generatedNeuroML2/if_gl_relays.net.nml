@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="network_if_gl">
 
@@ -7,19 +8,42 @@
     </notes>
 
 
-    <Include href="IaF_GrC_no_tonic_GABA.cell.nml"/>
+    <Include href="IaF_GrC.cell.nml"/>
     <Include href="relayCell.xml"/>
     <Include href="relaySynapse.xml"/>
 
+    <!-- these are not really needed here but it's best to keep the
+    imports as I'm using the blocking model from the Rothman NMDA
+    model for the dummmy synapse -->
     <Include href="RothmanMFToGrCAMPA.synapse.nml"/>
     <Include href="RothmanMFToGrCNMDA.synapse.nml"/>
 
     <relaySynapse id="relaySyn"/>
     <relayCell id="relayMF"/>
 
-    <expOneSynapse id="testSyn" tauDecay="200 ms" erev="40 mV" gbase="0.1 nS"/>
+    <blockingPlasticSynapse id="dummyAMPA" tauRise="0.3 ms"
+			    tauDecay="1.5 ms" erev="0 mV" gbase="3.7
+								 nS">
+      <plasticityMechanism type="tsodyksMarkramDepMechanism"
+			   initReleaseProb="0.1249" tauRec="131 ms"/>
+    </blockingPlasticSynapse>
+
+    <blockingPlasticSynapse id="dummyNMDA" tauRise="0.9 ms"
+			    tauDecay="14 ms" erev="0 mV" gbase="17
+								 nS">
+      <plasticityMechanism initReleaseProb="0.03220" tauFac="6.394 ms"
+			   tauRec="236.1 ms"
+			   type="tsodyksMarkramDepFacMechanism" />
+      <blockMechanism C1="2.07 mM" C2="0.015 mM" T="35 degC" blockConcentration="1 mM" deltaBind="0.35" deltaPerm="0.53" species="mg" type="RothmanBlockMechanism" z="2" />
+    </blockingPlasticSynapse>
     
-    <poissonFiringSynapse id="MF_stim_0" averageRate="0.1 per_ms" synapse="relaySyn" spikeTarget="./relaySyn"/>    
+    <poissonFiringSynapse id="mossySpikerON" averageRate="80 Hz"
+			  synapse="relaySyn"
+			  spikeTarget="./relaySyn"/>    
+    <poissonFiringSynapse id="mossySpikerOFF" averageRate="10 Hz"
+			  synapse="relaySyn"
+			  spikeTarget="./relaySyn"/>
+
     
     <network id="network_if_gl" type="networkWithTemperature" temperature="35.0 degC">
       
@@ -32,7 +56,7 @@
         </instance>
       </population>
       
-      <population id="GrCs" component="IaF_GrC_no_tonic_GABA" type="populationList" size="2">
+      <population id="GrCs" component="IaF_GrC" type="populationList" size="2">
         <annotation>
           <property tag="color" value="0.8359375 0.75 0.9921875"/>
         </annotation>
@@ -44,20 +68,15 @@
         </instance>	
       </population>
 
-      <projection id="MFs_to_GrCs_AMPA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="testSyn">
-        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+      <projection id="MFs_to_GrCs_AMPA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="dummyAMPA">
+        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+      </projection>
+
+      <projection id="MFs_to_GrCs_NMDA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="dummyNMDA">
+        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
       </projection>
       
-      <!--
-      <projection id="MFs_to_GrCs_AMPA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="RothmanMFToGrCAMPA">
-        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
-      </projection>
-      <projection id="MFs_to_GrCs_NMDA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="RothmanMFToGrCNMDA">
-        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC_no_tonic_GABA" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
-      </projection>
-      -->
-
-      <inputList id="MF_stim_0_list" component="MF_stim_0" population="MFs">
+      <inputList id="MF_stim_0_list" component="mossySpikerON" population="MFs">
         <input id="0" target="../MFs/0/relayMF" destination="synapses" fractionAlong="0.0"/>
       </inputList>
 	
