@@ -7,7 +7,7 @@
   <Include file="Networks.xml"/>
   <Include file="Simulation.xml"/>
 
-  <Include file="if_gl_relays.net.nml"/>
+  <Include file="if_gl_small_dummy_synapses.net.nml"/>
 
   <Simulation id="sim" length="1 s" step="0.025 ms" target="network_if_gl">
     <Display id="GrCs_v" title="GrCs, VOLTAGE" timeScale="1ms" xmin="-10.0" xmax="520.0" ymin="-80.0" ymax="-35.0">
