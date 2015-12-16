@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <neuroml xmlns="http://www.neuroml.org/schema/neuroml2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.neuroml.org/schema/neuroml2  https://raw.githubusercontent.com/NeuroML/NeuroML2/development/Schemas/NeuroML2/NeuroML_v2beta4.xsd" id="network_if_gl">
 
@@ -30,7 +29,7 @@
 			   type="tsodyksMarkramDepFacMechanism" />
       <blockMechanism type="voltageConcDepBlockMechanism"
 		      blockConcentration="1 mM"
-		      scalingConc="1 mM" scalingVolt="20 mV"/>
+		      scalingConc="1 mM" scalingVolt="50 mV"/>
       <!-- if one wants something vaguely realistic here, it's really
       necessary to include the RothmanBlockMechanism from the
       definition of the full NMDA model -->
@@ -53,6 +52,15 @@
         <instance id="0">
           <location x="-24.81423" y="22.996115" z="-14.799983"/>
         </instance>
+        <instance id="1">
+          <location x="6.565485" y="-18.400328" z="-26.767448"/>
+        </instance>
+        <instance id="2">
+          <location x="8.6967325" y="17.556622" z="24.854485"/>
+        </instance>
+        <instance id="3">
+          <location x="31.523079" y="4.7188334" z="10.61701"/>
+        </instance>
       </population>
       
       <population id="GrCs" component="IaF_GrC" type="populationList" size="2">
@@ -62,21 +70,57 @@
         <instance id="0">
           <location x="-26.353764" y="-10.970131" z="-25.889622"/>
         </instance>
-        <instance id="1">
-          <location x="26.353764" y="-10.970131" z="-25.889622"/>
-        </instance>	
       </population>
 
       <projection id="MFs_to_GrCs_AMPA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="dummyAMPA">
-        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+        <connection id="0" preCellId="../MFs/0/relayMF"
+		    postCellId="../GrCs/0/IaF_GrC" preSegmentId="0"
+		    preFractionAlong="0.5" postSegmentId="0"
+		    postFractionAlong="0.5"/>
+        <connection id="1" preCellId="../MFs/1/relayMF"
+		    postCellId="../GrCs/0/IaF_GrC" preSegmentId="0"
+		    preFractionAlong="0.5" postSegmentId="0"
+		    postFractionAlong="0.5"/>
+        <connection id="2" preCellId="../MFs/2/relayMF"
+		    postCellId="../GrCs/0/IaF_GrC" preSegmentId="0"
+		    preFractionAlong="0.5" postSegmentId="0"
+		    postFractionAlong="0.5"/>
+        <connection id="3" preCellId="../MFs/3/relayMF"
+		    postCellId="../GrCs/0/IaF_GrC" preSegmentId="0"
+		    preFractionAlong="0.5" postSegmentId="0"
+		    postFractionAlong="0.5"/>
       </projection>
 
       <projection id="MFs_to_GrCs_NMDA" presynapticPopulation="MFs" postsynapticPopulation="GrCs" synapse="dummyNMDA">
-        <connection id="0" preCellId="../MFs/0/relayMF" postCellId="../GrCs/0/IaF_GrC" preSegmentId="0" preFractionAlong="0.5" postSegmentId="0" postFractionAlong="0.5"/>
+        <connection id="0" preCellId="../MFs/0/relayMF"
+		    postCellId="../GrCs/0/IaF_GrC" preSegmentId="0"
+		    preFractionAlong="0.5" postSegmentId="0"
+		    postFractionAlong="0.5"/>
+        <connection id="1" preCellId="../MFs/1/relayMF"
+		    postCellId="../GrCs/0/IaF_GrC" preSegmentId="0"
+		    preFractionAlong="0.5" postSegmentId="0"
+		    postFractionAlong="0.5"/>
+        <connection id="2" preCellId="../MFs/2/relayMF"
+		    postCellId="../GrCs/0/IaF_GrC" preSegmentId="0"
+		    preFractionAlong="0.5" postSegmentId="0"
+		    postFractionAlong="0.5"/>
+        <connection id="3" preCellId="../MFs/1/relayMF"
+		    postCellId="../GrCs/0/IaF_GrC" preSegmentId="0"
+		    preFractionAlong="0.5" postSegmentId="0"
+		    postFractionAlong="0.5"/>
       </projection>
       
       <inputList id="MF_stim_0_list" component="mossySpikerON" population="MFs">
-        <input id="0" target="../MFs/0/relayMF" destination="synapses" fractionAlong="0.0"/>
+        <input id="0" target="../MFs/0/relayMF" destination="synapses"
+	       fractionAlong="0.0"/>
+        <input id="1" target="../MFs/1/relayMF" destination="synapses"
+	       fractionAlong="0.0"/>
+      </inputList>
+      <inputList id="MF_stim_1_list" component="mossySpikerOFF" population="MFs">
+        <input id="2" target="../MFs/2/relayMF" destination="synapses"
+	       fractionAlong="0.0"/>
+        <input id="3" target="../MFs/3/relayMF" destination="synapses"
+	       fractionAlong="0.0"/>
       </inputList>
 	
 	
