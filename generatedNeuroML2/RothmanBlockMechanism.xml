@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Lems xmlns="http://www.neuroml.org/lems/0.7.2"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.neuroml.org/lems/0.7.2">
+
+  <ComponentType description="Synaptic blockage model used for the NMDA-mediated    synapse in Schwartz2012." extends="baseBlockMechanism" name="RothmanBlockMechanism">
+
+    <Parameter dimension="none" name="z" />
+    <Parameter dimension="temperature" name="T" />
+    <Parameter dimension="concentration" name="blockConcentration" />
+    <Parameter dimension="none" name="deltaBind" />
+    <Parameter dimension="none" name="deltaPerm" />
+    <Parameter dimension="concentration" name="C1" />
+    <Parameter dimension="concentration" name="C2" />
+
+    <Constant dimension="charge_per_mole" name="faradayConstant" value="96485.3365 C_per_mol" />
+    <Constant dimension="idealGasConstantDims" name="idealGasConstant" value="8.3144621 J_per_K_per_mol" />
+
+    <Requirement dimension="voltage" name="v" />
+
+    <Text name="species" />
+
+    <Dynamics>
+      <DerivedVariable dimension="per_voltage" name="theta" value="(z * faradayConstant) / (idealGasConstant * T)" />
+      <DerivedVariable dimension="none" exposure="blockFactor" name="blockFactor" value="(C1 * exp(deltaBind * theta * v) + C2 * exp(-deltaPerm * theta * v)) / (C1 * exp(deltaBind * theta * v) + C2 * exp(-deltaPerm * theta * v) + blockConcentration * exp(-deltaBind * theta * v))" />
+    </Dynamics>
+  </ComponentType>
+
+</Lems>
